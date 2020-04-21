@@ -18,7 +18,7 @@ public class MultiStepEulerAngle : MonoBehaviour
 
     private void Update()
     {
-        Vector3 sourceEulerAngles = source.eulerAngles;
+        Vector3 sourceEulerAngles = source.localEulerAngles;
         x.localEulerAngles = new Vector3(sourceEulerAngles.x, 0, 0);
         y.localEulerAngles = new Vector3(0, sourceEulerAngles.y, 0);
         z.localEulerAngles = new Vector3(0, 0, sourceEulerAngles.z);
