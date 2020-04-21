@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 只需1个节点的分步骤欧拉角换算。
+/// </summary>
 public class MultiStepEulerAnglePacked : MonoBehaviour
 {
     public Transform source;

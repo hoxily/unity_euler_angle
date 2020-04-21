@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 用鼠标拖动时，沿过中心点的任意方向的旋转轴的旋转操作。
+/// </summary>
 public class TrackBallRotator : MonoBehaviour
 {
     public float rotateSpeed;

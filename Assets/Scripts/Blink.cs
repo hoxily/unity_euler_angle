@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 闪烁。用于指示Source物体。
+/// </summary>
 public class Blink : MonoBehaviour
 {
     public Renderer target;
