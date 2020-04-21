@@ -303,6 +303,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5e847e10b61c3f2459dcb4663db3c4f1, type: 2}
   - {fileID: 11400000, guid: 9fbec9b5781908944822691386851885, type: 2}
   - {fileID: 11400000, guid: 292f49ecb2406c843bc9b6a57b51e510, type: 2}
+  useQuaternionInsteadWhenWorldSpace: 1
 --- !u!1 &154200895
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +651,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3dd676ef2af9f6740ac546658888df78, type: 2}
   - {fileID: 11400000, guid: 8ef113362ca648649bef2b056dbf0923, type: 2}
   - {fileID: 11400000, guid: a8a924cbaec8aee4b819adcf14431598, type: 2}
+  useQuaternionInsteadWhenWorldSpace: 0
 --- !u!1 &628785964
 GameObject:
   m_ObjectHideFlags: 0

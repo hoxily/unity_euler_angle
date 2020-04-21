@@ -80,18 +80,48 @@ public class MultiStepEulerAnglePacked : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 使用四元数来代替辅助Transform节点。
+    /// </summary>
+    public bool useQuaternionInsteadWhenWorldSpace;
+
     private void Update()
     {
         if (CheckRotateOrders(out Space space))
         {
             if (space == Space.World)
             {
-                helper.localRotation = Quaternion.identity;
-                foreach (var r in rotateOrders)
+                if (useQuaternionInsteadWhenWorldSpace)
                 {
-                    r.RotateBy(source, helper);
+                    //注意for循环里q是左乘新的Quaternion。因为使用Quaternion变换向量时是 q * vector，
+                    //而多个相邻的Quaternion可以压缩为一个：q3 * q2 * q1 * vector = (q3 * (q2 * q1)) * vector;
+                    Quaternion q = Quaternion.identity;
+                    foreach (var r in rotateOrders)
+                    {
+                        if (r is XAxisRotator)
+                        {
+                            q = Quaternion.Euler(source.localEulerAngles.x, 0, 0) * q;
+                        }
+                        else if (r is YAxisRotator)
+                        {
+                            q = Quaternion.Euler(0, source.localEulerAngles.y, 0) * q;
+                        }
+                        else if (r is ZAxisRotator)
+                        {
+                            q = Quaternion.Euler(0, 0, source.localEulerAngles.z) * q;
+                        }
+                    }
+                    transform.localRotation = q;
                 }
-                transform.localRotation = helper.localRotation;
+                else
+                {
+                    helper.localRotation = Quaternion.identity;
+                    foreach (var r in rotateOrders)
+                    {
+                        r.RotateBy(source, helper);
+                    }
+                    transform.localRotation = helper.localRotation;
+                }
             }
             else
             {
